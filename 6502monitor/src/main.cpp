@@ -5,8 +5,8 @@
 constexpr int NUM_DATA = 8;
 constexpr int NUM_ADDR = 16;
 
-// Using ben eater's pinout because it makes sense
-constexpr char ADDR[] = {22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52};
+// Note: last 4 pins are inverted to work with my plug connector
+constexpr char ADDR[] = {22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 52, 50, 48, 46};
 constexpr char DATA[] = {39, 41, 43, 45, 47, 49, 51, 53};
 constexpr char CLOCK = 2;
 constexpr char RW = 3;
