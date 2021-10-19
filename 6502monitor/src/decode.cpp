@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "decode.h";
+#include "decode.h"
 
 constexpr char ASCII_A_OFFSET = 55;
 constexpr char ASCII_ZERO_OFFSET = 48;
