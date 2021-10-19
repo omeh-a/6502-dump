@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include "decode.h"
-#include <string>
+
 #define NUM_DATA 8;
 #define NUM_ADDR 16
 
@@ -35,27 +35,27 @@ void setup()
 void loop(){}
 
 void tick() {
-    std::string out = "";
+    char out[NUM_ADDR];
     uint16_t addr = 0;
     uint8_t data = 0;
 
-    Serial.print("ADDR::")
+    Serial.print("ADDR::");
 
     // Collect address
-    for (int n = 0; n < 16; n += 1) {
+    for (int n = 0; n < NUM_ADDR; n++) {
         int bit = digitalRead(ADDR[n]) ? 1 : 0;
         Serial.print(bit);
-        address = (addr << 1) + bit;
+        addr = (addr << 1) + bit;
     }
-    Serial.print("   DATA::")
+    Serial.print("   DATA::");
 
     // Collect data
-    for (int n = 0; n < 8; n += 1) {
+    for (int n = 0; n < NUM_DATA; n++) {
         int bit = digitalRead(DATA[n]) ? 1 : 0;
         Serial.print(bit);
         data = (data << 1) + bit;
     }
 
     sprintf(out, "   %04x  %c %02x", addr, digitalRead(RW) ? 'r' : 'W', data);
-    Serial.println(output);
+    Serial.println(out);
 }
